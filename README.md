@@ -56,6 +56,51 @@ https://pub.towardsai.net/fine-tuning-language-models-for-business-making-large-
 +-------------------------+
 ```
 
+## Advanced dataflow
+
+```
++-------------------------+
+|   📄 Long Document      |
+|        Input            |
++-------------------------+
+            |
+            v
++-------------------------+
+|      🔤 Tokenizer       |
++-------------------------+
+            |
+            v
++-------------------------+
+|    📦 Segment Loop      |
+|   (length = L)          |
++-------------------------+
+     /      |       \
+    v       v        v
++--------+ +------------+ +-------------+
+| Sparse | |  Recurrence| | Hierarchical|
+|Attention| | & Memory  | | Compression|
++--------+ +------------+ +-------------+
+    |           |            |
+    v           v            v
++--------+ +------------+ +-------------+
+| BigBird| |Transformer-XL| |Compressive |
+|Style   | | / RMT / XL   | |Transformer |
++--------+ +------------+ +-------------+
+    |           |            |
+    +-----+-----+------------+
+          |
+          v
++-------------------------+
+|   🔗 Integrate Outputs   |
+|  (merge token & memory) |
++-------------------------+
+          |
+          v
++-------------------------+
+|🏁 Final Aggregated Result|
++-------------------------+
+```
+
 
 Thanks for clarifying. I’ll dive into how large context windows (like Gemini’s multi-million token context vs. 100k token contexts in other models) are built, how they function internally, and strategies for extending or optimizing context window handling — without using retrieval-augmented generation (RAGs).
 I'll get back to you with a detailed explanation, technical approaches, and real-world examples soon!
