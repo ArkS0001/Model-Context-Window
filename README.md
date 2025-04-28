@@ -5,6 +5,57 @@ https://www.ibm.com/think/topics/context-window
 
 https://pub.towardsai.net/fine-tuning-language-models-for-business-making-large-language-models-truly-yours-68ed8e5cbb36
 
+# Dataflow
+
+```
++-------------------------+
+|   📄 Long Document      |
+|        Input            |
++-------------------------+
+            |
+            v
++-------------------------+
+|      🔤 Tokenizer       |
++-------------------------+
+            |
+            v
++-------------------------+
+|    📦 Segment Loop      |
+|   (length = L)          |
++-------------------------+
+            |
+            v
++-------------------------+
+|   🔄 Concatenate with   |
+|        Memory           |
++-------------------------+
+            |
+            v
++-------------------------+
+| 🤖 Transformer-XL       |
+|   Segment Processing    |
++-------------------------+
+        |           |
+        v           v
++----------------+ +----------------+
+| 📊 Collect     | | 🧠 Update       |
+|   Outputs      | |   Memory Cache |
++----------------+ +----------------+
+        |           |
+        +-----+-----+
+              |
+              v
++-------------------------+
+|   🔗 Aggregate All      |
+|       Outputs           |
++-------------------------+
+              |
+              v
++-------------------------+
+|       🏁 Final Result    |
++-------------------------+
+```
+
 
 Thanks for clarifying. I’ll dive into how large context windows (like Gemini’s multi-million token context vs. 100k token contexts in other models) are built, how they function internally, and strategies for extending or optimizing context window handling — without using retrieval-augmented generation (RAGs).
 I'll get back to you with a detailed explanation, technical approaches, and real-world examples soon!
